@@ -26,5 +26,12 @@
         <item name="android:singleLine">true</item>
     </style>
 
+    <style name="base" parent="">
+        <item name="android:background">@drawable/fondo</item>
+
+
+
+    </style>
+
 
 </resources>

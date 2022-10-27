@@ -26,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         binding.btnregistro.setOnClickListener{
 
             Toast.makeText(this, "Registro", Toast.LENGTH_SHORT).show()
+            val register= Intent(this,Registro::class.java)
+            startActivity(register)
 
         }
         binding.btnsomos.setOnClickListener{

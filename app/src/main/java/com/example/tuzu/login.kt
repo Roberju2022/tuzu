@@ -1,5 +1,6 @@
 package com.example.tuzu
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
@@ -19,7 +20,9 @@ class login : AppCompatActivity() {
             val mEmail = binding.emailEditText.text.toString()
             val mPassword = binding.txtcontrasena.text.toString()
 
-           val jj =binding.txtcontrasena.error
+
+
+
 
             when {
                 mPassword.isEmpty() || mEmail.isEmpty() -> {
@@ -29,10 +32,14 @@ class login : AppCompatActivity() {
                 else -> {
 
 
+
+
                     if(!Patterns.EMAIL_ADDRESS.matcher(mEmail).matches()) {
-                        Toast.makeText(this, "$jj +Ingrese un email valido.",
+                        Toast.makeText(this, "Ingrese un email valido.",
                             Toast.LENGTH_SHORT).show()
-                    }   else {
+                    }else if (mPassword.length<8){binding.txtcontrasena.error="La contraseña es de minimo 8 caracteres"}
+
+                    else {
                         Toast.makeText(this, "Pasamos a validar con base de datos", Toast.LENGTH_SHORT).show()
                     }
 
@@ -41,6 +48,14 @@ class login : AppCompatActivity() {
             }
 
 
+
+        }
+
+
+        binding.signUpTextView.setOnClickListener{
+
+            val register= Intent(this,Registro::class.java)
+            startActivity(register)
 
         }
 
