@@ -7,15 +7,134 @@
     tools:context=".login"
     android:background="@drawable/fondo">
 
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_ingresar"
+        app:layout_constraintVertical_bias="0.859">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="No tienes cuenta?"
+
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/signUpTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="0"
+            android:text="Registrate"
+            android:textColor="#EFFE42"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_recordar_contraseña"
+        android:layout_width="191dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="4dp"
+        android:gravity="end"
+        android:text="Olvidaste tu contraseña?"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.927"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="230dp"
+        android:layout_height="99dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/txt_bienvenido2"
+        android:layout_width="102dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="56dp"
+        android:fontFamily="@font/a_robotocondensedbold"
+        android:text="Ingreso"
+        android:textColor="#000000"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.553"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/emailEditText"
+        android:layout_width="380dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="56dp"
+        android:autofillHints="email"
+        android:background="@color/white"
+        android:drawableStart="@drawable/ico_mail"
+        android:drawablePadding="16dp"
+        android:ems="10"
+        android:hint="email"
+
+        android:inputType="textEmailAddress"
+        android:padding="16dp"
+        android:textColor="@color/black"
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_bienvenido2" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="200dp"
-        android:layout_height="50dp"
+        android:id="@+id/textInputLayout"
+        android:layout_width="380dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="24dp"
 
-        android:layout_marginTop="156dp"
-        android:background="@color/white"
-        app:endIconMode="clear_text"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="117dp"></com.google.android.material.textfield.TextInputLayout>
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        app:endIconMode="password_toggle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailEditText">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtcontrasena"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@color/white"
+            android:drawableStart="@drawable/ico_llave"
+            android:hint="Contraseña"
+            android:inputType="textPassword" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_ingresar"
+        android:layout_width="171dp"
+        android:layout_height="51dp"
+        android:text="Ingresar"
+        app:icon="@drawable/ico_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_recordar_contraseña" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
