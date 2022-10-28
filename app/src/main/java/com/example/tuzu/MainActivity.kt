@@ -33,6 +33,9 @@ class MainActivity : AppCompatActivity() {
         binding.btnsomos.setOnClickListener{
             Toast.makeText(this, "Somos", Toast.LENGTH_SHORT).show()
 
+            val prueba= Intent(this,LugaresListado::class.java)
+            startActivity(prueba)
+
         }
 
 

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/base"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".principal">
+
+    <Button
+        android:id="@+id/btn_sitios"
+        android:layout_width="253dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="24dp"
+
+
+        android:layout_marginEnd="156dp"
+        android:text="Sitios de Interes"
+        app:icon="@drawable/ico_register_dos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_cabecera_home"
+        tools:layout_editor_absoluteX="9dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="224dp"
+        android:layout_height="41dp"
+        android:text="Recorre Boyacà"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:fontFamily="@font/a_robotocondensedbold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

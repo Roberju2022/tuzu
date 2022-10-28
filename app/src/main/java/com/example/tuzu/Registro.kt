@@ -25,8 +25,8 @@ class Registro : AppCompatActivity() {
 
         binding.btnRegresar.setOnClickListener{
 
-            val login= Intent(this,login::class.java)
-            startActivity(login)
+            val home= Intent(this,MainActivity::class.java)
+            startActivity(home)
         }
 
         binding.txtFechaNacimiento.setOnClickListener {
@@ -70,6 +70,7 @@ class Registro : AppCompatActivity() {
                 //binding.txtEmail.setBackgroundColor(Color.RED)
                 Toast.makeText(this, "Ingrese un email valido.",
                     Toast.LENGTH_SHORT).show()
+                binding.txtEmail.error="aja y tu que"
             } else if (mNombres.isEmpty() || !letras.matcher(mNombres).matches()){
                 Toast.makeText(this, "Los nombres no deben tener caracteres numericos.",
                     Toast.LENGTH_SHORT).show()

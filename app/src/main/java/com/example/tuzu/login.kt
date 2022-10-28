@@ -47,6 +47,8 @@ class login : AppCompatActivity() {
                     }else if (mPassword.length<8){binding.txtcontrasena.error="La contraseña es de minimo 8 caracteres"}
 
                     else {
+                        val principal = Intent(this,principal::class.java)
+                        startActivity(principal)
                         Toast.makeText(this, "Pasamos a validar con base de datos", Toast.LENGTH_SHORT).show()
                     }
 
