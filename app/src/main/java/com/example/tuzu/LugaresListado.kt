@@ -33,8 +33,26 @@ class LugaresListado : AppCompatActivity() {
 
         }
         initRecyclerView()
+        createSuperHero()
 
     }
+
+    //CREAR
+    private fun createSuperHero() {
+        val lugarnuevo = lugares(
+            "Incognito",
+            "AristiDevsCorporation",
+            "https://pbs.twimg.com/profile_images/1037281659727634432/5x2XVPwB_400x400.jpg"
+        )
+
+        listadoMutablelugares.add(index = 1, lugarnuevo)
+        adapter.notifyItemInserted(3)
+        llmanager.scrollToPositionWithOffset(3, 10)
+    }
+    //
+
+
+
     private fun initRecyclerView() {
         adapter=lugaresAdapter(
             LugaresList = listadoMutablelugares,

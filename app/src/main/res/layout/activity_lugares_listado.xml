@@ -11,13 +11,14 @@
 
     <EditText
         android:id="@+id/etFilter"
-        android:singleLine="true"
-        android:maxLines="1"
-        android:imeOptions="actionDone"
         android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:background="@color/verde_secundario"
         android:hint="Buscar"
-        android:background="@color/white"
-        android:layout_height="wrap_content"/>
+        android:drawableStart="@drawable/ico_search"
+        android:imeOptions="actionDone"
+        android:maxLines="1"
+        android:singleLine="true" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerLugares"

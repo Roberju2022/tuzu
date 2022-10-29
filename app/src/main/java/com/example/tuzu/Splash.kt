@@ -40,7 +40,7 @@ class Splash : AppCompatActivity() {
                     cargando!!.text = "Cargando " + i.toString() + "/" + barra.max
                 })
                 try {
-                    Thread.sleep(20)
+                    Thread.sleep(50)
                 } catch (e: InterruptedException) {
                     e.printStackTrace()
                 }

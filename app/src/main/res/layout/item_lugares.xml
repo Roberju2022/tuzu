@@ -20,11 +20,12 @@
     <TextView
         android:id="@+id/tvname"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="28dp"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.321"
         app:layout_constraintStart_toEndOf="@+id/tvimagen"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Hotel Julio" />
@@ -32,7 +33,7 @@
     <TextView
         android:id="@+id/tvdireccion"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
@@ -44,10 +45,11 @@
         android:id="@+id/btnDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:backgroundTint="@color/black"
         android:text="BORRAR :("
-       />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvimagen"
+        app:layout_constraintTop_toBottomOf="@+id/tvdireccion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
