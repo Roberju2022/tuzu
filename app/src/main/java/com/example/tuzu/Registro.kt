@@ -10,11 +10,16 @@ import android.widget.Toast
 import androidx.core.graphics.red
 import com.example.tuzu.databinding.ActivityLoginBinding
 import com.example.tuzu.databinding.ActivityRegistroBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import java.util.*
 import java.util.regex.Pattern
 
 class Registro : AppCompatActivity() {
     private lateinit var binding: ActivityRegistroBinding
+    private lateinit var auth:FirebaseAuth
     lateinit var datePickerDialog: DatePickerDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +27,7 @@ class Registro : AppCompatActivity() {
         binding = ActivityRegistroBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        auth = Firebase.auth
 
         binding.btnRegresar.setOnClickListener{
 
@@ -90,7 +96,10 @@ class Registro : AppCompatActivity() {
                 Toast.makeText(this, "La contraseñas no coinciden.",
                     Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Aja todo ok para acceder", Toast.LENGTH_SHORT).show()
+
+
+                createAccount(mEmail,mPassword,mNombres, mApellidos,mFechanacimiento,mTelefono)
+
             }
 
         }
@@ -100,4 +109,62 @@ class Registro : AppCompatActivity() {
 
 
     }
+
+    private fun createAccount(email: String, password: String, nombres:String, apellidos:String,fecha_nacimiento:String,celular:String) {
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    //val intent = Intent(this, CheckEmailActivity::class.java)
+                    //this.startActivity(intent)
+                    val user = auth.currentUser
+
+                    val uid = user!!.uid
+
+                    val map = hashMapOf(
+                        "nombres" to nombres,
+                        "apellidos" to apellidos,
+                        "fecha nacimiento" to fecha_nacimiento,
+                        "celular" to celular,
+
+                    )
+
+                    val db = Firebase.firestore
+
+                    db.collection("users").document(uid).set(map).addOnSuccessListener {
+                        //infoUser()
+                        Toast.makeText(this, "Usuario Registrado", Toast.LENGTH_SHORT).show()
+                    }
+                        .addOnFailureListener {
+                            Toast.makeText(
+                                this,
+                                "Fallo al guardar la informacion",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+
+
+
+                    reload()
+                } else {
+                    Toast.makeText(this, "No se pudo crear la cuenta. Vuelva a intertarlo",
+                        Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+
+    private fun reload() {
+        val intent = Intent(this, principal::class.java)
+        this.startActivity(intent)
+    }
+
+    public override fun onStart() {
+        super.onStart()
+        val currentUser = auth.currentUser
+        if(currentUser != null){
+
+            reload()
+
+        }
+    }
+
 }

@@ -14,6 +14,7 @@ class lugaresViewHolder (view: View):RecyclerView.ViewHolder(view){
         lugaresModel: lugares,
         onClickListener: (lugares) -> Unit,
         onClickDelete: (Int) -> Unit
+
     ) {
         binding.tvname.text = lugaresModel.Nombre
         binding.tvdireccion.text=lugaresModel.Direccion
@@ -21,8 +22,12 @@ class lugaresViewHolder (view: View):RecyclerView.ViewHolder(view){
         Glide.with(binding.tvimagen.context).load(lugaresModel.photo).into(binding.tvimagen)
         binding.tvimagen.setOnClickListener { onClickListener(lugaresModel) }
 
+
+
         itemView.setOnClickListener { Toast.makeText(itemView.context,"Nombre "+binding.tvdireccion.text, Toast.LENGTH_SHORT).show()}
         binding.btnDelete.setOnClickListener {  onClickDelete(adapterPosition) }
+
+
     }
 
 }

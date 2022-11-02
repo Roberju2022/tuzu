@@ -1,7 +1,9 @@
 package com.example.tuzu.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tuzu.R
 import com.example.tuzu.lugares
@@ -11,6 +13,7 @@ class lugaresAdapter (
     private var LugaresList:List<lugares>,
     private val onClickListener: (lugares) -> Unit,
     private val onClickDelete:(Int) -> Unit
+
 ): RecyclerView.Adapter<lugaresViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): lugaresViewHolder {
@@ -29,6 +32,8 @@ class lugaresAdapter (
         this.LugaresList = LugaresList
         notifyDataSetChanged()
     }
+
+
 
 
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "220189767659",
+    "project_id": "tuzu-51ac2",
+    "storage_bucket": "tuzu-51ac2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:220189767659:android:43ab620036717c7c8e8bae",
+        "android_client_info": {
+          "package_name": "com.example.tuzu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "220189767659-rch5q6s4dh740bdu1n764e0qo3vcv837.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2-dEP0hcp8c8NypQkkCXyTTev1nf2Zsw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "220189767659-rch5q6s4dh740bdu1n764e0qo3vcv837.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

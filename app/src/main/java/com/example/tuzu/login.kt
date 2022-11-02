@@ -7,10 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.MediaStore.Images.Media.getBitmap
+import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.tuzu.databinding.ActivityLoginBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import java.util.regex.Pattern
 
 
@@ -18,11 +22,19 @@ import java.util.regex.Pattern
 class login : AppCompatActivity() {
     val REQUEST_IMAGE_CAPTURE = 1
     private lateinit var binding:ActivityLoginBinding
+    private lateinit var auth:FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
+        auth = Firebase.auth
         val view = binding.root
+
+
+
         setContentView(view)
+
+
         binding.btnIngresar.setOnClickListener {
             val mEmail = binding.emailEditText.text.toString()
             val mPassword = binding.txtcontrasena.text.toString()
@@ -47,9 +59,9 @@ class login : AppCompatActivity() {
                     }else if (mPassword.length<8){binding.txtcontrasena.error="La contraseña es de minimo 8 caracteres"}
 
                     else {
-                        val principal = Intent(this,principal::class.java)
-                        startActivity(principal)
-                        Toast.makeText(this, "Pasamos a validar con base de datos", Toast.LENGTH_SHORT).show()
+
+                        signIn(mEmail, mPassword)
+                        
                     }
 
 
@@ -81,10 +93,36 @@ class login : AppCompatActivity() {
 
 
     }
+    public override fun onStart() {
+        super.onStart()
+        val currentUser = auth.currentUser
+        if(currentUser != null){
+
+                reload()
+
+        }
+    }
 
 
 
+    private fun signIn(email: String, password: String) {
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    Log.d("TAG", "signInWithEmail:success")
+                    reload()
+                } else {
+                    Log.w("TAG", "signInWithEmail:failure", task.exception)
+                    Toast.makeText(baseContext, "Email o contraseña o incorrectos.",
+                        Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
 
+    private fun reload() {
+        val intent = Intent(this, principal::class.java)
+        this.startActivity(intent)
+    }
 
 
     private fun dispatchTakePictureIntent() {
@@ -104,7 +142,6 @@ class login : AppCompatActivity() {
             binding.imageView5.setImageBitmap(imageBitmap)
         }
     }
-
 
 
 
