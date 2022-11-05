@@ -2,6 +2,7 @@ package com.example.tuzu
 
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -22,7 +23,8 @@ import com.google.firebase.storage.FirebaseStorage
 
 class LugaresListado : AppCompatActivity() {
     private lateinit var binding: ActivityLugaresListadoBinding
-
+    private val database = Firebase.database
+    private val myRef = database.getReference("Lugares")
 
 
     //private var listadoMutablelugares:MutableList<lugares> = lugaresProvider.LugaresList.toMutableList()
@@ -38,7 +40,15 @@ class LugaresListado : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        //
+
+        binding.floatingActionButton.setOnClickListener{
+            val intent= Intent(this,nuevoLugar::class.java)
+            startActivity(intent)
+
+
+        }
+
+        /*
         val db = Firebase.firestore
         val docRef = db.collection("prueba").document("CBdBC8USP4bcQiEyK9GD")
         docRef.get()
@@ -68,18 +78,21 @@ class LugaresListado : AppCompatActivity() {
             .addOnFailureListener { exception ->
                 Log.d(TAG, "get failed with ", exception)
             }
-        //
+        */
 
 
         //aja
+        val db = Firebase.firestore
+
         db.collection("prueba")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    Toast.makeText(this, "${document.id} => ${document.data}", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this, "${document.id} => ${document.data}", Toast.LENGTH_SHORT).show()
 
                     val mlugar =
-                        lugares(document.getString("Nombre").toString(),document.getString("Direccion").toString(),document.getString("Photo").toString())
+                        lugares(document.getString("nombre").toString(),document.getString("direccion").toString(),document.getString("photo").toString(),document.getString("key").toString())
+
                     listadoMutablelugares.add(mlugar)
                     adapter.notifyItemInserted(1)
                     // Log.d(TAG, "${document.id} => ${document.data}")

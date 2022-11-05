@@ -1,9 +1,12 @@
 package com.example.tuzu
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
 import com.example.tuzu.databinding.ActivityMainBinding
 
 
@@ -16,6 +19,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+
+
+
 
         binding.btningresar.setOnClickListener{
             Toast.makeText(this, "Ingreso", Toast.LENGTH_SHORT).show()
@@ -37,6 +44,15 @@ class MainActivity : AppCompatActivity() {
             startActivity(prueba)
 
         }
+
+        binding.btnListInvi.setOnClickListener{
+            Toast.makeText(this, "Lista Invitado", Toast.LENGTH_SHORT).show()
+
+            val intent= Intent(this,listadoLugaresInvitado::class.java)
+            startActivity(intent)
+
+        }
+
 
 
     }

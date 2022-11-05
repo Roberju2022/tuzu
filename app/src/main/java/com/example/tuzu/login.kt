@@ -35,6 +35,8 @@ class login : AppCompatActivity() {
         setContentView(view)
 
 
+
+
         binding.btnIngresar.setOnClickListener {
             val mEmail = binding.emailEditText.text.toString()
             val mPassword = binding.txtcontrasena.text.toString()
@@ -127,6 +129,8 @@ class login : AppCompatActivity() {
 
     private fun dispatchTakePictureIntent() {
         val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+
+
         try {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
         } catch (e: ActivityNotFoundException) {
